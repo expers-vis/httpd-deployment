@@ -1,0 +1,50 @@
+---
+
+- hosts: all
+  become: true
+  tasks: 
+    - name: add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: install Docker
+      dnf:
+        state: latest
+        name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+
+    - name: install pip3
+      dnf:
+        name: python3-pip
+        state: latest
+
+    - name: install Python Docker Library
+      pip:
+        name: docker
+        state: present
+
+    - name: start Docker
+      command: 
+        cmd: systemctl start docker
+      register: result
+      until: result is not failed
+      retries: 10
+      delay: 10
+
+    - name: build the Image
+      docker_image:
+        name: hwserver:latest
+        state: present
+        build:
+          path: .
+          pull: true
+        source: build
+
+    - name: run the Container
+      docker_container:
+        name: hwserver
+        state: started
+        image: hwserver:latest
+        ports:
+          - 8080:80
+        detach: true
