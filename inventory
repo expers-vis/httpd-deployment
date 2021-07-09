@@ -1,3 +1,7 @@
+[default]
 localhost
 kolla2_vm   # ssh key present
 # 192.168.200.53 ansible_ssh_pass=tieto123  # kolla predeploy vm
+
+[default:vars]
+podman_registry_path=/var/lib/registry
