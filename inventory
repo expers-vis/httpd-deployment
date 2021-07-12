@@ -4,4 +4,7 @@ kolla2_vm   # ssh key present
 # 192.168.200.53 ansible_ssh_pass=tieto123  # kolla predeploy vm
 
 [default:vars]
+registry_config_path: /etc/containers/registries.conf
 podman_registry_path=/var/lib/registry
+podman_registry_name=registry
+service_name=httpd_service
