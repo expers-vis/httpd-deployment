@@ -2,33 +2,8 @@
 
 - hosts: all
   become: true
-  tasks:
-    - name: stop the Container
-      docker_container:
-        name: hwserver:latest
-        state: absent
-      ignore_errors: true
-
-    - name: remove Docker componets
-      dnf:
-        name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
-        state: absent
-
-    - name: remove residual Docker files and repo
-      command:
-        cmd: rm -rf "{{ item }}"
-        warn: false
-      with_items:
-        - /var/lib/docker
-        - /var/lib/containerd
-        - /etc/yum.repos.d/docker-ce.repo
-
-    - name: remove Python Docker Library
-      pip:
-        name: docker
-        state: absent
-
-    - name: remove pip3
-      dnf:
-        name: pip
-        state: absent
+  #roles:
+    # stop service container
+    # remove service image
+    # shut down and remove local registry
+    # uninstall podman
