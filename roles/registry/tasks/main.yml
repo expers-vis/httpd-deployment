@@ -5,7 +5,7 @@
 
 - name: Deploy the Registry
   podman_container:
-    name: registry
+    name: "{{ podman_registry_name }}"
     image: registry:2
     privileged: yes
     state: started

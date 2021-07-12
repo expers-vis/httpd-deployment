@@ -1,7 +1,7 @@
 - name: Launch Container with Service
   podman_container:
-    name: httpd_service
-    image: localhost:5000/httpd_service
+    name: "{{ service_name }}"
+    image: "localhost:5000/{{ service_name }}"
     state: started
     ports:
       - 8080:80
