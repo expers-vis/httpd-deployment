@@ -1,0 +1,6 @@
+- name: Build Image from Dockerfile
+  podman_image:
+    name: localhost:5000/httpd_service
+    pull: no
+    push: yes
+    path: Dockerfile

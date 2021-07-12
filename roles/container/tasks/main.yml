@@ -1,0 +1,7 @@
+- name: Launch Container with Service
+  podman_container:
+    name: httpd_service
+    image: localhost:5000/httpd_service
+    state: started
+    ports:
+      - 8080:80
