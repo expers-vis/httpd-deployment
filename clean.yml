@@ -2,8 +2,8 @@
 
 - hosts: all
   become: true
-  #roles:
-    # stop service container
-    # remove service image
-    # shut down and remove local registry
-    # uninstall podman
+  roles:
+    - rm_container  # stop service container
+    - rm_image      # remove service image
+    - rm_registry   # shut down and remove local registry
+    - rm_podman     # uninstall podman
