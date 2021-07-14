@@ -2,6 +2,8 @@
 
 - hosts: all
   become: true
+  vars:
+    - /vars/setup_vars.yml
   roles:
     - rm_container  # stop service container
     - rm_image      # remove service image

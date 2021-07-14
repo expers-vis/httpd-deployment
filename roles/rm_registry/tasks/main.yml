@@ -1,12 +1,12 @@
 - name: Shut Down Registry
   podman_container:
-    name: "{{ podman_registry_name }}"
+    name: "{{ registry['name'] }}"
     state: absent
 
 - name: Remove Registry from Config File
   replace:
-    path: "{{ registry_config_path }}"
-    regexp: "\[registries.insecure\]\nregistries = \['localhost:5000'\]"
+    path: "{{ registry['config_path'] }}"
+    regexp: "\[registries.insecure\]\nregistries = \['{{ registry['address'] }}'\]"
     replace: "[registries.insecure]\nregistries = []"
 
 - name: Restart Podman
@@ -16,5 +16,5 @@
 
 - name: Remove Local Directory
   file:
-    path: "{{ podman_registry_path  }}"
+    path: "{{ registry['path']  }}"
     state: absent

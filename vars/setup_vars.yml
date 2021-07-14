@@ -1,0 +1,13 @@
+---
+
+registry:
+  name: registry
+  path: /var/lib/registry
+  config_path: /etc/containers/registries.conf
+  ipaddr: &anchor_ipaddr localhost
+  port: &anchor_port 5000
+  address: *anchor_ipaddr:*anchor_port
+
+service:
+  name: httpd_service
+  port: 8080
