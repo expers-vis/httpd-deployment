@@ -8,11 +8,8 @@
     path: "{{ registry['config_path'] }}"
     regexp: "{{ regex['front'] + registry['address'] + regex['back'] }}"
     replace: "[registries.insecure]\nregistries = []"
-
-- name: Restart Podman
-  service:
-    name: podman
-    state: restarted
+  notify:
+   - Restart Podman
 
 - name: Remove Local Directory
   file:

@@ -4,7 +4,7 @@
     state: directory
 
 - name: Deploy the Registry
-  podman_container:
+  containers.podman.podman_container:
     name: "{{ registry['name'] }}"
     image: registry:2
     privileged: yes
@@ -20,8 +20,5 @@
     path: "{{ registry['config_path'] }}"
     regexp: '\[registries.insecure\]\nregistries = \[\]'
     replace: "[registries.insecure]\nregistries = ['{{ registry['address'] }}']"
-
-- name: Restart Podman
-  service:
-    name: podman
-    state: restarted
+  notify:
+   - Restart Podman
