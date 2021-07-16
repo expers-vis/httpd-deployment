@@ -2,6 +2,7 @@
   dnf:
     name: podman
     state: absent
+  when: options['remove_podman'] | bool
 
 - name: Remove residual directories
   file:
@@ -12,3 +13,4 @@
    - /var/lib/containers/
    - /etc/subuid
    - /etc/subgid
+   when: options['remove_podman_residuals'] | bool

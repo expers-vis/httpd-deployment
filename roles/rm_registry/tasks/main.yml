@@ -2,12 +2,14 @@
   containers.podman.podman_container:
     name: "{{ registry['name'] }}"
     state: absent
+  when: options['remove_registry'] | bool
 
 - name: Remove Registry from Config File
   replace:
     path: "{{ registry['config_path'] }}"
     regexp: "{{ regex['front'] + registry['address'] + regex['back'] }}"
     replace: "[registries.insecure]\nregistries = []"
+  when: options['remove_registry'] | bool
   notify:
    - Restart Podman
 
@@ -15,3 +17,4 @@
   file:
     path: "{{ registry['path']  }}"
     state: absent
+  when: options['remove_registry'] | bool

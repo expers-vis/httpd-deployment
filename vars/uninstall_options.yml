@@ -1,0 +1,8 @@
+---
+
+options:
+  remove_service_container: yes
+  remove_service_image: yes
+  remove_registry: yes
+  remove_podman: no
+  remove_podman_residuals: no

@@ -2,3 +2,4 @@
   containers.podman.podman_image:
     name: "{{ registry['address'] }}:{{ registry['port'] }}/{{ service['name'] }}"
     state: absent
+  when: options['remove_service_image'] | bool

@@ -2,3 +2,4 @@
   containers.podman.podman_container:
     name: "{{ service['name'] }}"
     state: absent
+  when: options['remove_service_container'] | bool
