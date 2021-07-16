@@ -1,4 +1,4 @@
 - name: Stop and Remove Service Container
-  podman_container:
+  containers.podman.podman_container:
     name: "{{ service['name'] }}"
     state: absent

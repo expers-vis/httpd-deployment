@@ -1,4 +1,4 @@
 - name: Remove Service Image from Local Registry
-  podman_image:
-    name: "{{ registry['address'] }}/{{ service['name'] }}"
+  containers.podman.podman_image:
+    name: "{{ registry['address'] }}:{{ registry['port'] }}/{{ service['name'] }}"
     state: absent

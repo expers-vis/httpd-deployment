@@ -1,7 +1,7 @@
 - name: Launch Container with Service
-  podman_container:
+  containers.podman.podman_container:
     name: "{{ service['name'] }}"
-    image: "{{ registry['address'] }}/{{ service['name'] }}"
+    image: "{{ registry['address'] }}:{{ registry['port'] }}/{{ service['name'] }}"
     state: started
     ports:
       - "{{ service['port'] }}:80"

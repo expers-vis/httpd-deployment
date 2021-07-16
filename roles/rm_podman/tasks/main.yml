@@ -7,9 +7,8 @@
   file:
     name: "{{ item }}"
     state: absent
-    recurse: yes
-    with_items:
-     - /etc/containers
-     - /var/lib/containers/
-     - /etc/subuid
-     - /etc/subgid
+  with_items:
+   - /etc/containers
+   - /var/lib/containers/
+   - /etc/subuid
+   - /etc/subgid
