@@ -2,8 +2,8 @@
 
 - hosts: all
   become: true
-  vars:
-    - /vars/setup_vars.yml
+  vars_files:
+    - vars/setup_vars.yml
   roles:
     - podman      # install podman
     - registry    # launch local registry
