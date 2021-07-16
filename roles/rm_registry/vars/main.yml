@@ -1,0 +1,5 @@
+---
+
+regex:
+  front: !unsafe \[registries.insecure\]\nregistries = \[\'
+  back: !unsafe \'\]

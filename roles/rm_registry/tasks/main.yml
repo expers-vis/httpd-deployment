@@ -1,12 +1,12 @@
 - name: Shut Down Registry
-  podman_container:
+  containers.podman.podman_container:
     name: "{{ registry['name'] }}"
     state: absent
 
 - name: Remove Registry from Config File
   replace:
     path: "{{ registry['config_path'] }}"
-    regexp: "\[registries.insecure\]\nregistries = \['{{ registry['address'] }}'\]"
+    regexp: "{{ regex['front'] + registry['address'] + regex['back'] }}"
     replace: "[registries.insecure]\nregistries = []"
 
 - name: Restart Podman
