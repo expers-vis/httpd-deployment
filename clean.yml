@@ -4,6 +4,7 @@
   become: true
   vars_files:
     - vars/setup_vars.yml
+    - vars/uninstall_options.yml
   roles:
     - rm_container  # stop service container
     - rm_image      # remove service image
