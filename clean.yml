@@ -10,3 +10,9 @@
     - rm_image      # remove service image
     - rm_registry   # shut down and remove local registry
     - rm_podman     # uninstall podman
+  
+  handlers:
+    - name: Restart Podman
+      service:
+        name: podman
+        state: restarted

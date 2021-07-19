@@ -9,3 +9,9 @@
     - registry    # launch local registry
     - image       # create service image and push it to the local registry
     - container   # create container service from image
+
+  handlers:
+    - name: Restart Podman
+      service:
+        name: podman
+        state: restarted

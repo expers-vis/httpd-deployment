@@ -1,4 +1,0 @@
-- name: Restart Podman
-  service:
-    name: podman
-    state: restarted

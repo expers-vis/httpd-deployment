@@ -22,3 +22,6 @@
     replace: "[registries.insecure]\nregistries = ['{{ registry['address'] }}']"
   notify:
    - Restart Podman
+
+- name: Force Handlers
+  meta: flush_handlers

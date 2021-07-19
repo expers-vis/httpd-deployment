@@ -13,6 +13,9 @@
   notify:
    - Restart Podman
 
+- name: Force Handlers
+  meta: flush_handlers
+
 - name: Remove Local Directory
   file:
     path: "{{ registry['path']  }}"
