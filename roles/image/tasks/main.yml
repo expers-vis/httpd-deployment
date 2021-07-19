@@ -17,8 +17,6 @@
     name: "{{ registry['address'] }}:{{ registry['port'] }}/{{ service['name'] }}"
     pull: no
     path: "/tmp/buildfiles/"
-    build:
-      rm: yes
 
 - name: Push Image to Local Registry
   containers.podman.podman_image:
@@ -29,4 +27,9 @@
 - name: Remove Temporary Directory
   file:
     path: /tmp/buildfiles
+    state: absent
+
+- name: Remove Intermediate Image
+  containers.podman.podman_image:
+    name: httpd
     state: absent

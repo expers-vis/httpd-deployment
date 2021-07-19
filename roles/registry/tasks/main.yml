@@ -14,8 +14,6 @@
     detach: yes
     ports:
       - "{{ registry['port'] }}:{{ registry['port'] }}"
-    cmd_args:
-     - --rmi=true
 
 - name: Define the New Registry
   replace:
