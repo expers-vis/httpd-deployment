@@ -18,3 +18,8 @@
     path: "{{ registry['path']  }}"
     state: absent
   when: options['remove_registry'] | bool
+
+- name: Remove Image
+  containers.podman.podman_image:
+    name: registry:2
+    state: absent

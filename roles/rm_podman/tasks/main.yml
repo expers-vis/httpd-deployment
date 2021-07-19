@@ -13,4 +13,4 @@
    - /var/lib/containers/
    - /etc/subuid
    - /etc/subgid
-   when: options['remove_podman_residuals'] | bool
+  when: options['remove_podman_residuals'] | bool
